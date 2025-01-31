@@ -1,0 +1,61 @@
+.add-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.left img {
+    width: 800px;
+    height: 600px;
+}
+
+form {
+    width: 600px;
+    height: auto;
+    margin: 50px 0 0 0px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-align: justify;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
+}
+
+.label {
+    color: white;
+    
+}
+
+input[type=text], input[type=number], input[type=date], input[type=file], select {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+    background-color: #1a1a1a;
+}
+
+.addBtn {
+    background-color: #cb5745;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.addBtn:hover {
+    background-color: #a63f2f;
+    transition: 300ms;
+}

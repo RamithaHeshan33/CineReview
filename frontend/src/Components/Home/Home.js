@@ -26,7 +26,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Nav />
       <h1 style={{textAlign: "center", fontSize: "1.5rem", fontWeight: "700"}}>Movie Details</h1>
 

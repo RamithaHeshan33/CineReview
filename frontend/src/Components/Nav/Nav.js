@@ -14,20 +14,20 @@ function Nav() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link as={Link} to="/" active>
+        <Navbar.Link as={Link} to="/" className="navbar-link">
           Home
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/about">
-          About
+        <Navbar.Link as={Link} to="/add" className="navbar-link">
+          Add
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/services">
-          Services
+        <Navbar.Link as={Link} to="/search" className="navbar-link">
+          Search
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/pricing">
-          Pricing
+        <Navbar.Link as={Link} to="/update" className="navbar-link">
+          Update
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/contact">
-          Contact
+        <Navbar.Link as={Link} to="/delete" className="navbar-link">
+          Delete
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
