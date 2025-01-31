@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const router = require('./Routes/MovieRoutes');
+const cors = require('cors')
 
 //Middleware
 app.use(express.json());
+app.use(cors());
 app.use('/', router);
 
 //Connect to DB
