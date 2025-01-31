@@ -93,3 +93,26 @@ const updateMovie = async(req, res) => {
 }
 
 exports.updateMovie = updateMovie;
+
+
+//Delete Movie
+const deleteMovie = async(req, res) => {
+    const {id} = req.params;
+    let movie;
+    try {
+        movie = await movieModel.findByIdAndDelete(id);
+    }
+
+    catch(err) {
+        console.log(err);
+    }
+
+    if(!movie) {
+        return res.status(404).json({
+            message: "Movie deleting failed!"
+        });
+    }
+    return res.status(200).json({movie});
+}
+
+exports.deleteMovie = deleteMovie;
