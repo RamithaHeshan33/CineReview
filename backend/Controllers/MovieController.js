@@ -66,3 +66,30 @@ const getMovieById = async(req, res) => {
 }
 
 exports.getMovieById = getMovieById;
+
+
+//Update Movie
+const updateMovie = async(req, res) => {
+    const {id} = req.params;
+    const {title, year, status} = req.body;
+    let movie;
+    try {
+        movie = await movieModel.findByIdAndUpdate(id, {
+            title, year, status
+        });
+        movie = await movieModel.save();
+    }
+
+    catch(err) {
+        console.log(err);
+    }
+
+    if(!movie) {
+        return res.status(404).json({
+            message: 'Movie updating failed'
+        });
+    }
+    return res.status(200).json({movie});
+}
+
+exports.updateMovie = updateMovie;

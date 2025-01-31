@@ -6,6 +6,7 @@ const movieModel = require('../Models/MovieModels');
 router.get('/', movieController.getAllMovies);
 router.post('/add', movieController.addMovie);
 router.get('/:id', movieController.getMovieById);
+router.put('/:id', movieController.updateMovie);
 
 
 module.exports = router;
