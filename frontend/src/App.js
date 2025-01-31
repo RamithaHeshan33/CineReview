@@ -4,6 +4,7 @@ import Home from './Components/Home/Home';
 import Add from './Components/Add/Add';
 import Search from './Components/Search/Search';
 import Update from './Components/Update/Update';
+import Delete from './Components/Delete/Delete';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/add" element={<Add />} />
         <Route path="/search" element={<Search />} />
         <Route path="/update" element={<Update />} />
+        <Route path='/delete' element={<Delete />} />
 
       </Routes>
     </div>
