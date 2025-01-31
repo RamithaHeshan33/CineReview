@@ -9,7 +9,7 @@ function Nav() {
     <Navbar fluid rounded className="nav">
       <Navbar.Brand as={Link} to="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          React
+          CR
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />

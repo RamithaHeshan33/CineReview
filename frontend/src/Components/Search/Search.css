@@ -1,0 +1,10 @@
+.search-input {
+    margin: 0 100px 0 100px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.search-input input {
+    width: 50%;
+}
