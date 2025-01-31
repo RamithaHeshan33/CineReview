@@ -13,6 +13,10 @@ const MovieSchema = new Schema({
     status: {
         type: String,
         required: true
+    },
+    image: {
+        type: String, // Added a new field to store image path or URL
+        required: false
     }
 });
 

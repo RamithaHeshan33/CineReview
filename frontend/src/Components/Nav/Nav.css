@@ -1,0 +1,11 @@
+.nav {
+    background-color: #282c34;
+    color: white;
+    margin: 0 100px 0 100px;
+    padding: 15px;
+}
+
+.navbar-link {
+    color: white;
+}
+
