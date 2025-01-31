@@ -1,0 +1,23 @@
+.updateBtn {
+    background-color: #cb5745;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.updateBtn:hover {
+    background-color: #a63f2f;
+    transition: 300ms;
+}
+
+.update-title {
+    color: white;
+}
+
+.update-modal {
+    background-color: #282c34;
+}
