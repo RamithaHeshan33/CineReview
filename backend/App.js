@@ -1,16 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const router = require('./Routes/MovieRoutes');
 
 //Middleware
 app.use(express.json());
-app.use('/', (res, req, next) => {
-    res.send('Hello World');
-});
+app.use('/', router);
 
 //Connect to DB
 //IPPLJ26NbFbtkpkJ
 mongoose.connect("mongodb+srv://admin:IPPLJ26NbFbtkpkJ@cluster0.zyjul.mongodb.net/")
 .then(() => console.log('Connected to DB'))
-.then(() => {app.listen(3000);})
+.then(() => {app.listen(5000);})
 .catch(err => console.log(err));
