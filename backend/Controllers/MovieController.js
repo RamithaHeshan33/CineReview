@@ -44,3 +44,25 @@ const addMovie = async(req, res) => {
 }
 
 exports.addMovie = addMovie;
+
+
+//Get Movie by ID
+const getMovieById = async(req, res) => {
+    const {id} = req.params;
+    let movie;
+    try {
+        movie = await movieModel.findById(id);
+    }
+    catch(err) {
+        console.log(err);
+    }
+
+    if(!movie) {
+        return res.status(404).json({
+            message: 'No movie found'
+        });
+    }
+    return res.status(200).json({movie});
+}
+
+exports.getMovieById = getMovieById;
