@@ -23,7 +23,7 @@ const getAllMovies = async (req, res) => {
         console.log(err);
     }
 
-    if (!movie) {
+    if (!movie || movie.length === 0) {
         return res.status(404).json({ message: 'No movies found' });
     }
     return res.status(200).json({ movie });
