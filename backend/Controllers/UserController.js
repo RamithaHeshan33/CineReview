@@ -18,30 +18,39 @@ const userRegister = async (req, res) => {
     try {
         const { name, email, password, phone } = req.body;
 
-        // Check if the user already exists
+        // Check if all required fields are provided
+        if (!name || !email || !password || !phone) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        // Check if user already exists
         const existingUser = await userModel.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        // Hash the password before saving
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // Hash password before saving
+        const hashedPassword = await bcrypt.hash(password, 10); // ✅ Ensure password and salt are passed
 
         // Create new user
         const newUser = new userModel({
             name,
             email,
-            password: hashedPassword,
-            phone
+            password: hashedPassword, // ✅ Store hashed password
+            phone,
         });
 
         await newUser.save();
+
         return res.status(201).json({ message: 'User registered successfully', user: newUser });
+
     } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: 'Error registering user' });
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
     }
 };
+
+module.exports = { userRegister };
 
 // ✅ Properly export both functions
 module.exports = {
