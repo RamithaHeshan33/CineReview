@@ -14,6 +14,8 @@ const getAllUsers = async (req, res) => {
     }
 };
 
+exports.getAllUsers = getAllUsers;
+
 const userRegister = async (req, res) => {
     try {
         const { name, email, password, phone } = req.body;
@@ -50,10 +52,34 @@ const userRegister = async (req, res) => {
     }
 };
 
-module.exports = { userRegister };
+exports.userRegister = userRegister;
 
-// ✅ Properly export both functions
-module.exports = {
-    getAllUsers,
-    userRegister
+// User Login
+const userLogin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Check if user exists
+        const user = await userModel.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        // Compare passwords
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: 'Invalid credentials' });
+        }
+
+        // Exclude password in the response
+        const { password: _, ...userWithoutPassword } = user.toObject();
+
+        return res.status(200).json({ message: 'Login successful', user: userWithoutPassword });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
+
+exports.userLogin = userLogin;

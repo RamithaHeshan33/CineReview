@@ -29,6 +29,9 @@ function Nav() {
         <Navbar.Link as={Link} to="/delete" className="navbar-link">
           Delete
         </Navbar.Link>
+        <Navbar.Link as={Link} to="/login" className="navbar-link">
+          Login
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

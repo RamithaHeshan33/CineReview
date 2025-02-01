@@ -6,5 +6,6 @@ const router = express.Router();
 // Define user-related routes
 router.get('/', userController.getAllUsers);
 router.post('/register', userController.userRegister); // ✅ Now properly defined
+router.post('/login', userController.userLogin);
 
 module.exports = router;

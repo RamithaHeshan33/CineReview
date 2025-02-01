@@ -5,6 +5,8 @@ import Add from './Components/Add/Add';
 import Search from './Components/Search/Search';
 import Update from './Components/Update/Update';
 import Delete from './Components/Delete/Delete';
+import UserRegistration from './Components/User/UserRegistration/Register';
+import UserLogin from './Components/User/UserLogin/Login';
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/update" element={<Update />} />
         <Route path='/delete' element={<Delete />} />
+        <Route path='/register' element={<UserRegistration />} />
+        <Route path='/login' element={<UserLogin />} />
+        
 
       </Routes>
     </div>
