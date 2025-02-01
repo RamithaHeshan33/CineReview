@@ -1,15 +1,18 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const router = require('./Routes/IndexRoutes'); // ✅ Use IndexRoutes
+
 const app = express();
-const router = require('./Routes/MovieRoutes');
 const cors = require('cors');
-const path = require('path'); // Import path module
+const mongoose = require('mongoose');
+const path = require('path');
 
 // Middleware
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve images from 'uploads' folder
 app.use(cors());
-app.use('/', router);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Use the index router
+app.use('/', router);  // ✅ Now it handles both movies & users
 
 // Connect to DB
 mongoose.connect("mongodb+srv://admin:IPPLJ26NbFbtkpkJ@cluster0.zyjul.mongodb.net/")
