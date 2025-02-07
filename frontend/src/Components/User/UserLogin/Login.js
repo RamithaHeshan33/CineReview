@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'; 
 
-const LOGIN_URL = 'http://localhost:5000/user/login'; // Corrected endpoint
+const LOGIN_URL = 'http://localhost:5000/users/login'; // Corrected endpoint
 
 function Login() {
     const [formData, setFormData] = useState({
