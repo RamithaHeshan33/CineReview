@@ -33,7 +33,7 @@ exports.getAllMovies = getAllMovies;
 
 // Add Movie with Image
 const addMovie = async (req, res) => {
-    const { title, year, status } = req.body;
+    const { title, year, status, description } = req.body;
     let image = req.file ? req.file.path : ''; // Store uploaded image path
 
     let movie;
@@ -42,6 +42,7 @@ const addMovie = async (req, res) => {
             title,
             year,
             status,
+            description,
             image // Save image path in the database
         });
         await movie.save();
@@ -81,7 +82,7 @@ exports.getMovieById = getMovieById;
 // Update Movie with Image
 const updateMovie = async (req, res) => {
     const { id } = req.params;
-    const { title, year, status } = req.body;
+    const { title, year, status, description } = req.body;
     let image = req.file ? req.file.path : null; // Get new image if uploaded
 
     let movie;
@@ -94,6 +95,7 @@ const updateMovie = async (req, res) => {
         movie.title = title;
         movie.year = year;
         movie.status = status;
+        movie.description = description;
         if (image) {
             movie.image = image; // Update image only if a new one is provided
         }

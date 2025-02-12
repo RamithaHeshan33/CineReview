@@ -15,6 +15,7 @@ function Update() {
         title: '',
         year: '',
         status: '',
+        description: '',
         image: ''
     });
 
@@ -52,6 +53,7 @@ function Update() {
             title: movie.title,
             year: movie.year,
             status: movie.status,
+            description: movie.description,
             image: movie.image
         });
         setModalOpen(true);
@@ -73,6 +75,7 @@ function Update() {
                             <h2>{movie.title}</h2>
                             <p>Year: {movie.year}</p>
                             <p>Status: {movie.status}</p>
+                            {/* <p>Description: {movie.description}</p> */}
                             <button className='updateBtn' onClick={() => handleOpenModal(movie)}>Update</button>
                         </div>
                     ))
@@ -83,7 +86,7 @@ function Update() {
 
             {modalOpen && selectedMovie && (
                 <Modal show={modalOpen} onClose={() => setModalOpen(false)}>
-                    <Modal.Header className='update-title text-3xl font-bold text-center text-gray-800'>Update Movie</Modal.Header>
+                    {/* <Modal.Header className='update-title text-3xl font-bold text-center text-gray-800'>Update Movie</Modal.Header> */}
                     <Modal.Body className='update-modal'>
                         <div className="flex flex-col gap-4">
                             <label className='label'>Title</label>
@@ -106,6 +109,11 @@ function Update() {
                                 value={updatedData.image}
                                 onChange={(e) => setUpdatedData({ ...updatedData, image: e.target.value })}
                                 required={true}
+                            />
+                            <label className='label'>Description</label>
+                            <TextInput
+                                value={updatedData.description}
+                                onChange={(e) => setUpdatedData({ ...updatedData, description: e.target.value })}
                             />
                         </div>
                     </Modal.Body>

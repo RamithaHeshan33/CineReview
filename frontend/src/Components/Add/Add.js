@@ -14,6 +14,7 @@ function Add() {
     title: '',
     year: '',
     status: '',
+    description: '',
     image: null,
   });
 
@@ -49,6 +50,7 @@ function Add() {
       formData.append('title', movie.title);
       formData.append('year', movie.year);
       formData.append('status', movie.status);
+      formData.append('description', movie.description);
       formData.append('image', movie.image);  // Append the image
 
       // Send the form data as multipart/form-data
@@ -107,6 +109,14 @@ function Add() {
 
             <label>Image: </label>
             <input type='file' onChange={handleImageChange} />
+
+            <label>Description: </label>
+            <textarea
+              name='description'
+              placeholder='Description'
+              value={movie.description}
+              onChange={handleChange}
+            />
 
             <button type='submit' className='addBtn'>Add Movie</button>
           </form>
