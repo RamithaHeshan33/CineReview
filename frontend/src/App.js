@@ -8,6 +8,7 @@ import Delete from './Components/Delete/Delete';
 import UserRegistration from './Components/User/UserRegistration/Register';
 import UserLogin from './Components/User/UserLogin/Login';
 import Dashboard from './Components/User/Dashboard/Dashboard';
+import RateMovie from './Components/User/RateMovie/RateMovie';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/register' element={<UserRegistration />} />
         <Route path='/login' element={<UserLogin />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/rate/:id" element={<RateMovie />} />
 
       </Routes>
     </div>

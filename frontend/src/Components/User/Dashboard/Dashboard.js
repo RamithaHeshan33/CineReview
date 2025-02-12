@@ -8,14 +8,13 @@ const URL = "http://localhost:5000/";
 function Dashboard() {
     const navigate = useNavigate();
     const [movies, setMovies] = useState([]);
-    const [loading, setLoading] = useState(true); // Loading state
+    const [loading, setLoading] = useState(true);
 
-    // Redirect if no token
     useEffect(() => {
         if (!localStorage.getItem('token')) {
-            navigate('/login', { replace: true }); // Replaces history to prevent going back
+            navigate('/login');
         }
-    }, [navigate]); // Only runs when the component mounts
+    }, [navigate]);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -44,7 +43,6 @@ function Dashboard() {
                 </button>
             </div>
 
-            {/* Show loading message if data is being fetched */}
             {loading ? (
                 <p>Loading Data...</p>
             ) : (
@@ -62,7 +60,12 @@ function Dashboard() {
                                 <h2>{movie.title}</h2>
                                 <p>Year: {movie.year}</p>
                                 <p>Status: {movie.status}</p>
-                                <button className='updateBtn'>Rate</button>
+                                <button
+                                    className='updateBtn'
+                                    onClick={() => navigate(`/rate/${movie._id}`, { state: movie })}
+                                >
+                                    Rate
+                                </button>
                             </div>
                         ))
                     ) : (
