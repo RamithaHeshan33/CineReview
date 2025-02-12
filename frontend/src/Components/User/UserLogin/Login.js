@@ -37,6 +37,7 @@ function Login() {
                 localStorage.setItem('token', data.token); // Store JWT token
                 alert('Login Successful!');
                 navigate('/dashboard');
+                console.log('Login Successful:', data, formData);
             } else {
                 setError(data.message || 'Invalid Email or Password');
             }

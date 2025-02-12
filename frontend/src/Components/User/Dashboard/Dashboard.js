@@ -1,23 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CustomFooter from '../../Footer/CustomFooter';
+import axios from 'axios';
 
-// Dashboard component
+const URL = "http://localhost:5000/";
+
 function Dashboard() {
-
     const navigate = useNavigate();
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true); // Loading state
+
+    // Redirect if no token
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate('/login', { replace: true }); // Replaces history to prevent going back
+        }
+    }, [navigate]); // Only runs when the component mounts
+
+    useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                const response = await axios.get(URL);
+                console.log("API response", response.data);
+                setMovies(response.data.movie || []);
+            } catch (error) {
+                console.error("Error fetching data", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchMovies();
+    }, []);
 
     return (
-        <div>
-            {/* Logout Button - Removes token and redirects to login */}
-            <button onClick={() => {
-                localStorage.removeItem('token');
-                navigate('/login');
-            }}>
-                Logout
-            </button>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <div className='movie-container'>
+                <h1>Welcome to the Dashboard</h1>
+                <button onClick={() => {
+                    localStorage.removeItem('token');
+                    navigate('/login', { replace: true });
+                }}>
+                    Logout
+                </button>
+            </div>
 
-            <h1>Welcome to the Dashboard</h1>
+            {/* Show loading message if data is being fetched */}
+            {loading ? (
+                <p>Loading Data...</p>
+            ) : (
+                <div className='movie-container'>
+                    {movies.length > 0 ? (
+                        movies.map((movie) => (
+                            <div key={movie._id} className='card'>
+                                {movie.image && (
+                                    <img
+                                        src={`http://localhost:5000/${movie.image}`} 
+                                        alt={movie.title}
+                                        onError={(e) => { e.target.src = "https://via.placeholder.com/150"; }}
+                                    />
+                                )}
+                                <h2>{movie.title}</h2>
+                                <p>Year: {movie.year}</p>
+                                <p>Status: {movie.status}</p>
+                                <button className='updateBtn'>Rate</button>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No movies available</p>
+                    )}
+                </div>
+            )}
 
+            <div style={{ marginTop: "auto" }}>
+                <CustomFooter />
+            </div>
         </div>
     );
 }

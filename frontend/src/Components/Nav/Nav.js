@@ -8,7 +8,8 @@ function Nav() {
   return (
     <Navbar fluid rounded className="nav">
       <Navbar.Brand as={Link} to="/">
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+        <span className="flex self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          {/* <img src='tittle.png' alt='logo' style={{width: '50px', height: '50px'}} /> */}
           CR
         </span>
       </Navbar.Brand>
