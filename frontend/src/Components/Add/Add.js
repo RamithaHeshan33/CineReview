@@ -4,6 +4,7 @@ import CustomFooter from '../Footer/CustomFooter';
 import axios from 'axios';  // Import axios
 import './Add.css';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const URL = 'http://localhost:5000/add';
 
@@ -73,10 +74,26 @@ function Add() {
       <Nav />
 
       <div className='add-container'>
+      <motion.div 
+          className='project'
+          initial={{ x: -100, opacity: 0 }} // Start off-screen to the left
+          animate={{ x: 0, opacity: 1 }}  // Move to position with fade-in
+          transition={{ duration: 1.2, ease: "easeInOut" }}  // Smooth transition
+      >
+
         <div className='left'>
           <img src='./res/add.png' alt='add' />
         </div>
 
+      </motion.div>
+
+      <motion.div 
+          className='project'
+          initial={{ x: 100, opacity: 0 }} // Start off-screen to the left
+          animate={{ x: 0, opacity: 1 }}  // Move to position with fade-in
+          transition={{ duration: 1.2, ease: "easeInOut" }}  // Smooth transition
+      >
+        
         <div className='right'>
           <h1>Add Movie</h1>
           <form onSubmit={handleSubmit}>
@@ -121,6 +138,9 @@ function Add() {
             <button type='submit' className='addBtn'>Add Movie</button>
           </form>
         </div>
+
+      </motion.div>
+        
       </div>
 
       <div style={{ marginTop: 'auto' }}>

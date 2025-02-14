@@ -18,12 +18,12 @@
 }
 
 .rate-left {
-    width: 800px;
+    width: 500px;
 }
 
 .rate-right {
     text-align: justify;
-    width: 1500px;
+    width: 900px;
 }
 
 .below-description {
@@ -75,11 +75,11 @@
 
 .modal-content {
     padding: 20px;
-    background-color: rgba(77, 43, 37, 0.6); /* Semi-transparent background */
+    background-color: rgba(77, 43, 37, 0.6);
     width: 800px;
     height: auto;
-    backdrop-filter: blur(10px); /* Blurs the background */
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
@@ -123,7 +123,7 @@
     background-color: black;
     border-radius: 20px;
     margin-bottom: 10px;
-    height: 110px;
+    height: auto;
 }
 
 .rating-item:last-child {
@@ -138,11 +138,11 @@
 
 .view-modal-content {
     padding: 20px;
-    background-color: rgba(77, 43, 37, 0.6); /* Semi-transparent background */
+    background-color: rgba(77, 43, 37, 0.6);
     width: 800px;
     height: auto;
-    backdrop-filter: blur(10px); /* Blurs the background */
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
@@ -158,7 +158,6 @@
     font-weight: 700;
 }
 
-/* For WebKit browsers like Chrome, Safari */
 ::-webkit-scrollbar {
     display: none;
 }

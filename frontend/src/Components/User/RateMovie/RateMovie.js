@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './RateMovie.css';
 import CustomFooter from '../../Footer/CustomFooter';
+import { motion } from 'framer-motion';
 
 function RateMovie() {
     const location = useLocation();
@@ -111,41 +112,66 @@ function RateMovie() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <h1 className='mb-5 mt-5 rate-header'>Rate {movie.title}</h1>
-            <div className='rate-container'>
-                <div className='rate-left'>
-                    {movie.image && (
-                        <img
-                            className='rate-image'
-                            src={`http://localhost:5000/${movie.image}`}
-                            alt={movie.title}
-                            onError={(e) => { e.target.src = 'https://via.placeholder.com/150'; }}
-                        />
-                    )}
-                    <button onClick={() => navigate(-1)} className="back-button">← Back</button>
-                </div>
+            <motion.div
+                className='project'
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+            >
+                <h1 className='mb-5 mt-5 rate-header'>Rate {movie.title}</h1>
+            </motion.div>
 
-                <div className='rate-right'>
-                    <p className='mb-5 text-xl'>{movie.description}</p>
-                    <div className='below-description'>
-                        <div className='below-description-content'>
-                            <p className='des-con-p'><strong>Year:</strong></p>
-                            <p className='des-con-v'>{movie.year}</p>
+            
+            <div className='rate-container'>
+
+                <motion.div
+                    className='project'
+                    initial={{ x: -100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                >
+                    <div className='rate-left'>
+                        {movie.image && (
+                            <img
+                                className='rate-image'
+                                src={`http://localhost:5000/${movie.image}`}
+                                alt={movie.title}
+                                onError={(e) => { e.target.src = 'https://via.placeholder.com/150'; }}
+                            />
+                        )}
+                        <button onClick={() => navigate(-1)} className="back-button">← Back</button>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    className='project'
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                >
+                    <div className='rate-right'>
+                        <p className='mb-5 text-xl'>{movie.description}</p>
+                        <div className='below-description'>
+                            <div className='below-description-content'>
+                                <p className='des-con-p'><strong>Year:</strong></p>
+                                <p className='des-con-v'>{movie.year}</p>
+                            </div>
+                            <div className='below-description-content'>
+                                <p className='des-con-p'><strong>Status:</strong></p>
+                                <p className='des-con-v'>{movie.status}</p>
+                            </div>
+                            <div className='below-description-content'>
+                                <p className='des-con-p'><strong>Director:</strong></p>
+                                <p className='des-con-v'>Duffer Bros</p>
+                            </div>
                         </div>
-                        <div className='below-description-content'>
-                            <p className='des-con-p'><strong>Status:</strong></p>
-                            <p className='des-con-v'>{movie.status}</p>
-                        </div>
-                        <div className='below-description-content'>
-                            <p className='des-con-p'><strong>Director:</strong></p>
-                            <p className='des-con-v'>Duffer Bros</p>
+                        <div className="button-container">
+                            <button className='rateBtn' onClick={() => setModalType('rate')}>Rate</button>
+                            <button className='rateBtn' onClick={() => setModalType('view')}>View Ratings</button>
                         </div>
                     </div>
-                    <div className="button-container">
-                        <button className='rateBtn' onClick={() => setModalType('rate')}>Rate</button>
-                        <button className='rateBtn' onClick={() => setModalType('view')}>View Ratings</button>
-                    </div>
-                </div>
+                </motion.div>
+
             </div>
 
             <div style={{ marginTop: 'auto' }}>

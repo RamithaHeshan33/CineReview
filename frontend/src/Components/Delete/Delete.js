@@ -3,6 +3,7 @@ import './Delete.css'
 import Nav from '../Nav/Nav'
 import Footer from '../Footer/CustomFooter'
 import axios from 'axios';
+import { motion } from 'framer-motion'
 
 const URL = 'http://localhost:5000';
 
@@ -41,26 +42,47 @@ function Delete() {
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Nav />
 
-        <h1 style={{textAlign: "center"}}>Delete Movie</h1>
-        <div className='movie-container'>
-            {movies.length > 0 ? (
-                movies.map((movie) => (
-                    <div key={movie._id} className='card'>
-                        <img
-                            src={`http://localhost:5000/${movie.image}`}
-                            alt={movie.title}
-                            onError={(e) => { e.target.src = "https://via.placeholder.com/150"; }}
-                        />
-                        <h2>{movie.title}</h2>
-                        <p>Year: {movie.year}</p>
-                        <p>Status: {movie.status}</p>
-                        <button className='updateBtn' onClick={() => handleDelete(movie._id)}>Delete</button>
-                    </div>
-                ))
-            ) : (
-                <p className='no-movies'>No movies available</p>
-            )}
-        </div>
+        <motion.div
+            className='project'
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+            <h1 style={{textAlign: "center"}}>Delete Movie</h1>
+            
+        </motion.div>
+
+        <motion.div 
+            className='project'
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ 
+                duration: 1, 
+                // type: "spring", 
+                stiffness: 150, 
+                damping: 10 
+            }}
+        >
+            <div className='movie-container'>
+                {movies.length > 0 ? (
+                    movies.map((movie) => (
+                        <div key={movie._id} className='card'>
+                            <img
+                                src={`http://localhost:5000/${movie.image}`}
+                                alt={movie.title}
+                                onError={(e) => { e.target.src = "https://via.placeholder.com/150"; }}
+                            />
+                            <h2>{movie.title}</h2>
+                            <p>Year: {movie.year}</p>
+                            <p>Status: {movie.status}</p>
+                            <button className='updateBtn' onClick={() => handleDelete(movie._id)}>Delete</button>
+                        </div>
+                    ))
+                ) : (
+                    <p className='no-movies'>No movies available</p>
+                )}
+            </div>
+        </motion.div>
 
         <div style={{marginTop: "auto"}}>
             <Footer />
