@@ -35,10 +35,12 @@ function Login() {
     
             if (response.ok) {
                 localStorage.setItem('token', data.token); // Store JWT token
+                localStorage.setItem('user', JSON.stringify(data.user)); // Store user info
                 alert('Login Successful!');
                 navigate('/dashboard');
                 console.log('Login Successful:', data, formData);
-            } else {
+            }
+             else {
                 setError(data.message || 'Invalid Email or Password');
             }
         } catch (error) {

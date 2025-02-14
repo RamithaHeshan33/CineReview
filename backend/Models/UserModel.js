@@ -4,16 +4,16 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: [true]
+        required: true
     },
     email: {
         type: String,
-        required: [true],
+        required: true,
         unique: true
     },
     password: {
         type: String,
-        required: [true]
+        required: true
     },
     profilePic: {
         type: String,
@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     },
     phone: {
         type: String,
-        required: [true]
+        required: true
     },
 });
 
