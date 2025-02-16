@@ -14,3 +14,7 @@ CineReview is a web application that allows users to rate and review movies and 
 - 🔹 View ratings and reviews from other users
 - 🔹 Search for movies and TV series
 - 🔹 User-friendly interface
+
+
+https://github.com/user-attachments/assets/ee0dff8e-cb0e-4cb3-83ce-9dd5c0d0e9d5
+
